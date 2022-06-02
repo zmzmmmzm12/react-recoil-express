@@ -16,20 +16,23 @@ const Todo = () => {
 
   useEffect(() => {
     setDateValue(date.toISOString().split("T")[0]);
-    async function getData() {
+    (async () => {
       try {
         const { data } = await axios.get("/api/todo");
         setTodo(data);
       } catch (e) {
         console.log(e);
       }
-    }
-    getData();
+    })();
   }, []);
 
   const onAddList = () => {
     if (textValue.length === 0) {
       alert("할 일을 입력하세요.");
+      return;
+    }
+    if (dateValue.length === 0) {
+      alert("마감기한을 선택하세요.");
       return;
     }
     (async () => {
