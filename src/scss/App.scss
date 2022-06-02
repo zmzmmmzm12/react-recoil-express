@@ -1,0 +1,6 @@
+.App {
+  text-align: center;
+  :is(.divClass, span, form) button {
+    background-color: red;
+  }
+}
